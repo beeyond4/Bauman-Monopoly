@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block header %}
+  <h1>{% block title %}Error 404{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('profile.edit', id=g.user['id']) }}">Edit</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+    <article class="profile">
+      <header>
+        <div class="Error">Bro,<br>this page does not exist.</div>
+      </header>
+    </article>
+      <hr>
+{% endblock %}

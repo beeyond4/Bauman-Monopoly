@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block header %}
+  <h1>{% block title %}{{room['title']}}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.timers.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/socket.io.min.js') }}"></script>
+<script type="text/javascript">
+  $(document).ready(function (){
+    var namespace = "/gaming"
+    var delayInMilliseconds = 0;
+    var timerTrigger = 0;
+    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
+    socket.on('connect', function() {
+      socket.send({
+        'id' : {{ room['id'] }},
+        'stage' : 0,
+        'money' : Array({{ players|length }}).fill(1500),
+        'status' : Array({{ players|length }}).fill(1)
+      });
+    });
+    setTimeout(function() {
+    socket.on('message', function(data) {
+      socket.send(data)
+      return false
+    });
+    }, delayInMilliseconds);
+  });
+</script>
+{% if g.user %}
+<div class="space">
+      <header>
+        <table>
+          {% for i in players %}
+            <tr>
+              <td class="username">{{i}}</td>
+              <td>1500$ </td>
+            </tr>
+          {% endfor %}
+        </table>
+      </header>
+    <body>
+      <div class="gamefield">
+        <div class="map">
+          {% set facets = ["up_rib", "right_rib", "down_rib", "left_rib"] %}
+          {% set ranges = [range(10), range(10, 20), range(20, 30), range(30, 40)] %}
+          {% set specials = ['none', 'tax', 'railroad', 'utility', 'community_chest', 'chance'] %}
+          {% for side in range(4) %}
+            <div class={{ facets[side] }}>
+              {% for i in ranges[side] %}
+                {% set cell = cells[i] %}
+                {% if i%10 == 0 %}
+                  {% set type = "_angle" %}
+                {% else %}
+                  {% set type = "" %}
+                {% endif %}
+                <div class="cell{{ type }}">
+                  <div class="face">
+                    <table>
+                      {% if cell['color'] not in specials %}
+                        <tr>
+                          <td>
+                            <div class="color">
+                              <div class="{{ cell['color'] }}_color">
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      {% endif %}
+                      <tr>
+                        <th>
+                          <div class="street">
+                            {{ cell['street']}}
+                          </div>
+                        </th>
+                      </tr>
+                      <tr>
+                        <th>
+                          {% if cell['color'] in specials %}
+                            <div class="img">
+                              {% if cell['color'] == 'railroad' %}
+                                <object data="{{ url_for('static', filename='images/train.svg') }} " type="image/svg+xml">
+                                </object>
+                              {% elif cell['color'] == 'chance' %}
+                                <object data="{{ url_for('static', filename='images/chance.svg') }} " type="image/svg+xml">
+                                </object>
+                              {% endif %}
+                            </div>
+                          {% else %}
+                            <div class="space">
+                            </div>
+                          {% endif %}
+                        </th>
+                      </tr>
+                      {% if cell['price'] != 0 %}
+                        <tr>
+                          <td>
+                            <div class="price">
+                              PRICE: {{ cell['price'] }} $
+                            </div>
+                          </td>
+                        </tr>
+                      {% endif %}
+                    </table>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+        <h1>Bauman<br>Monopoly</h1>
+      </div>
+    </body>
+{% endif %}
+</div>
+{% endblock %}

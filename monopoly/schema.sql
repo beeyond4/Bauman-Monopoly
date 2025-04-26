@@ -1,0 +1,31 @@
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS room;
+DROP TABLE IF EXISTS map;
+
+CREATE TABLE user (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL,
+  balance INT
+);
+
+CREATE TABLE room (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  author_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  players_list TEXT,
+  status TEXT,
+  title TEXT NOT NULL,
+  game_data TEXT DEFAULT '0,0,0'
+  FOREIGN KEY (author_id) REFERENCES user (id)
+);
+
+CREATE TABLE map (
+  idx INTEGER,
+  street TEXT NOT NULL,
+  color TEXT,
+  price INTEGER,
+  BC INTEGER,
+  rent TEXT,
+  MV INTEGER
+);

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Rooms{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('mainroom.create') }}">New</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for index in range(rooms|length) %}
+    <article class="room">
+      <header>
+        <div id="hrefa{{  rooms[index]['id']  }}">
+          <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+          <script src="{{ url_for('static', filename='js/socket.io.min.js') }}"></script>
+          <script type="text/javascript">
+            $('#hrefa{{ rooms[index]['id'] }}').click(function (e){
+              e.preventDefault();
+              var href = this.href;
+              var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+              socket.on('connect', function() {
+                socket.send("{{ rooms[index]['id'] }}");
+              });
+              setTimeout(function() {
+                location.href = "{{ url_for('mainroom.go_to_room', id=rooms[index]['id']) }}";
+            }, 100);
+            });
+          </script>
+          <h1><a href="{{ url_for('mainroom.go_to_room', id=rooms[index]['id']) }}">{{ rooms[index]['title'] }}</a></h1>
+          <div class="about">by {{ rooms[index]['username'] }} on {{ rooms[index]['created'].strftime('%Y-%m-%d') }}</div>
+        </div>
+        {% if g.user['id'] == rooms[index]['author_id'] %}
+          <a class="action" href="{{ url_for('mainroom.update', id=rooms[index]['id']) }}">Edit</a>
+        {% endif %}
+      </header>
+      <div class="players">
+      {% if rooms[index]['players_list'] %}
+        {% for player in players[index] %}
+          {% if player is not none %}
+          <li>{{player}}</li>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <p class="empty_room">Empty room</p>
+      {% endif %}
+      </div>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

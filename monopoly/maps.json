@@ -1,0 +1,364 @@
+{
+  "map_classic": [
+    {
+      "index" : 1,
+      "street" : "Start",
+      "color" : "none",
+      "price" : 0,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 2,
+      "street" : "Mediterranean Avenue",
+      "color" : "brown",
+      "price" : 60,
+      "BC" : 50,
+      "rent" : "2,10,30,90,160,250",
+      "MV" : 30
+    },
+    {
+      "index" : 3,
+      "street" : "Community chest",
+      "color" : "community_chest",
+      "price" : 0,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 4,
+      "street" : "Baltic Avenue",
+      "color" : "brown",
+      "price" : 60,
+      "BC" : 50,
+      "rent" : "4,20,60,180,320,450",
+      "MV" : 30
+    },
+    {
+      "index" : 5,
+      "street" : "Income tax",
+      "color" : "tax",
+      "price" : 200,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 6,
+      "street" : "Reading Railroad",
+      "color" : "railroad",
+      "price" : 200,
+      "BC" : 0,
+      "rent" : "25,50,100,200,0,0",
+      "MV" : 100
+    },
+    {
+      "index" : 7,
+      "street" : "Oriental Avenue",
+      "color" : "lightblue",
+      "price" : 100,
+      "BC" : 50,
+      "rent" : "6,30,90,270,400,550",
+      "MV" : 50
+    },
+    {
+      "index" : 8,
+      "street" : "Chance",
+      "color" : "chance",
+      "price" : 0,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 9,
+      "street" : "Vermont Avenue",
+      "color" : "lightblue",
+      "price" : 100,
+      "BC" : 50,
+      "rent" : "6,30,90,270,400,550",
+      "MV" : 50
+    },
+    {
+      "index" : 10,
+      "street" : "Connecticut Avenue",
+      "color" : "lightblue",
+      "price" : 120,
+      "BC" : 50,
+      "rent" : "8,40,100,300,450,600",
+      "MV" : 60
+    },
+    {
+      "index" : 11,
+      "street" : "Prison",
+      "color" : "none",
+      "price" : 0,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 12,
+      "street" : "St. Charles Place",
+      "color" : "pink",
+      "price" : 140,
+      "BC" : 100,
+      "rent" : "10,50,150,450,625,750",
+      "MV" : 70
+    },
+    {
+      "index" : 13,
+      "street" : "Electric Company",
+      "color" : "utility",
+      "price" : 150,
+      "BC" : 0,
+      "rent" : "4,10,0,0,0,0",
+      "MV" : 75
+    },
+    {
+      "index" : 14,
+      "street" : "States Avenue",
+      "color" : "pink",
+      "price" : 140,
+      "BC" : 100,
+      "rent" : "10,50,150,450,625,750",
+      "MV" : 70
+    },
+    {
+      "index" : 15,
+      "street" : "Virginia Avenue",
+      "color" : "pink",
+      "price" : 160,
+      "BC" : 100,
+      "rent" : "12,60,180,500,700,900",
+      "MV" : 80
+    },
+    {
+      "index" : 16,
+      "street" : "Pennsylvania Railroad",
+      "color" : "railroad",
+      "price" : 200,
+      "BC" : 0,
+      "rent" : "25,50,100,200,0,0",
+      "MV" : 100
+    },
+    {
+      "index" : 17,
+      "street" : "St. James Place",
+      "color" : "orange",
+      "price" : 180,
+      "BC" : 100,
+      "rent" : "14,70,200,550,750,950",
+      "MV" : 90
+    },
+    {
+      "index" : 18,
+      "street" : "Community chest",
+      "color" : "community_chest",
+      "price" : 0,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 19,
+      "street" : "Tennessee Avenue",
+      "color" : "orange",
+      "price" : 180,
+      "BC" : 100,
+      "rent" : "14,70,200,550,750,950",
+      "MV" : 90
+    },
+    {
+      "index" : 20,
+      "street" : "New York Avenue",
+      "color" : "orange",
+      "price" : 200,
+      "BC" : 100,
+      "rent" : "16,80,220,600,800,1000",
+      "MV" : 100
+    },
+    {
+      "index" : 21,
+      "street" : "Free Parking",
+      "color" : "none",
+      "price" : 0,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 22,
+      "street" : "Kentucky Avenue",
+      "color" : "red",
+      "price" : 220,
+      "BC" : 150,
+      "rent" : "18,90,250,700,875,1050",
+      "MV" : 110
+    },
+    {
+      "index" : 23,
+      "street" : "Chance",
+      "color" : "chance",
+      "price" : 0,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 24,
+      "street" : "Indiana Avenue",
+      "color" : "red",
+      "price" : 220,
+      "BC" : 150,
+      "rent" : "18,90,250,700,875,1050",
+      "MV" : 110
+    },
+    {
+      "index" : 25,
+      "street" : "Illinois Avenue",
+      "color" : "red",
+      "price" : 240,
+      "BC" : 150,
+      "rent" : "20,100,300,750,925,1100",
+      "MV" : 120
+    },
+    {
+      "index" : 26,
+      "street" : "B. & O. Railroad",
+      "color" : "railroad",
+      "price" : 200,
+      "BC" : 0,
+      "rent" : "25,50,100,200,0,0",
+      "MV" : 100
+    },
+    {
+      "index" : 27,
+      "street" : "Atlantic Avenue",
+      "color" : "yellow",
+      "price" : 260,
+      "BC" : 150,
+      "rent" : "22,110,330,800,975,1150",
+      "MV" : 130
+    },
+    {
+      "index" : 28,
+      "street" : "Ventnor Avenue",
+      "color" : "yellow",
+      "price" : 260,
+      "BC" : 150,
+      "rent" : "22,110,330,800,975,1150",
+      "MV" : 130
+    },
+    {
+      "index" : 29,
+      "street" : "Water Works",
+      "color" : "utility",
+      "price" : 150,
+      "BC" : 0,
+      "rent" : "4,10,0,0,0,0",
+      "MV" : 75
+    },
+    {
+      "index" : 30,
+      "street" : "Marvin Gardens",
+      "color" : "yellow",
+      "price" : 280,
+      "BC" : 150,
+      "rent" : "24,120,360,850,1025,1200",
+      "MV" : 140
+    },
+    {
+      "index" : 31,
+      "street" : "Go to jail",
+      "color" : "none",
+      "price" : 0,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 32,
+      "street" : "Pacific Avenue",
+      "color" : "green",
+      "price" : 300,
+      "BC" : 200,
+      "rent" : "26,130,390,900,1100,1275",
+      "MV" : 150
+    },
+    {
+      "index" : 33,
+      "street" : "North Carolina Avenue",
+      "color" : "green",
+      "price" : 300,
+      "BC" : 200,
+      "rent" : "26,130,390,900,1100,1275",
+      "MV" : 150
+    },
+    {
+      "index" : 34,
+      "street" : "Community chest",
+      "color" : "community_chest",
+      "price" : 0,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 35,
+      "street" : "Pennsylvania Avenue",
+      "color" : "green",
+      "price" : 320,
+      "BC" : 200,
+      "rent" : "28,150,450,1000,1200,1400",
+      "MV" : 160
+    },
+    {
+      "index" : 36,
+      "street" : "Short Line",
+      "color" : "railroad",
+      "price" : 200,
+      "BC" : 0,
+      "rent" : "25,50,100,200,0,0",
+      "MV" : 100
+    },
+    {
+      "index" : 37,
+      "street" : "Chance",
+      "color" : "chance",
+      "price" : 0,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 38,
+      "street" : "Park Place",
+      "color" : "blue",
+      "price" : 350,
+      "BC" : 200,
+      "rent" : "35,175,500,1100,1300,1500",
+      "MV" : 175
+    },
+    {
+      "index" : 39,
+      "street" : "Luxury Tax",
+      "color" : "tax",
+      "price" : 75,
+      "BC" : 0,
+      "rent" : "0,0,0,0,0,0",
+      "MV" : 0
+    },
+    {
+      "index" : 40,
+      "street" : "Boardwalk",
+      "color" : "blue",
+      "price" : 400,
+      "BC" : 200,
+      "rent" : "50,200,600,1400,1700,2000",
+      "MV" : 200
+    }
+  ]
+}

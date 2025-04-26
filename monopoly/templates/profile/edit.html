@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block header %}
+  <h1>{% block title %}Your profile{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+{% if g.user %}
+  <form method="post">
+      <header>
+          <input name="username" class="textarea" id="username"
+          value="{{ request.form['username'] or g.user['username'] }}" requered>
+      </header>
+        <a>New password</a>
+          <input type="password" name="password" class="textarea" id="password"
+          value="{{ request.form['password'] }}" required>
+        <a>Confirm password</a>
+          <input type="password" name="password_confirm" class="textarea" id="password_confirm"
+          value="{{ request.form['password_confirm'] }}" required>
+    <body>
+        <input class="button" type="submit" value="Save">
+    </body>
+  </form>
+      <hr>
+{% endif %}
+{% endblock %}

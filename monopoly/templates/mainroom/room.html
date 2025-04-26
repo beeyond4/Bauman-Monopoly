@@ -1,0 +1,89 @@
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ room['title'] }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.timers.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/socket.io.min.js') }}"></script>
+<script type="text/javascript">
+  $(document).ready(function (){
+    var namespace = "/private"
+    var delayInMilliseconds = 0;
+    var timerTrigger = 0;
+    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
+    socket.on('connect', function() {
+      socket.send("Player connected!");
+    });
+    setTimeout(function() {
+    socket.on('message', function(data) {
+      var status = data[{{ room['id'] }}]
+      for (let i = 0; i < status.length; i++){
+        if (status[i] === '1'){
+        $(".player_username" + i).css("color", "#256bef");
+      } else {
+        $(".player_username" + i).css("color", "white");
+      }
+    }
+      if (status.search('0') === -1) {
+        if (timerTrigger === 0) {
+          $("#timer").text(10)
+          $("#timer").everyTime(1000, 'timer1', function(i) {
+            $(this).text(10 - i);
+            if (10-i === 0) {
+              location.href = "{{ url_for('game.game', id=room['id']) }}";
+            }
+          }, 10);
+          $("#timer").removeClass("Timer").addClass("ready_timer");
+          timerTrigger = 1;
+        }
+      } else {
+        timerTrigger = 0;
+        $("#timer").removeClass("ready_timer").addClass("Timer");
+        $("#timer").stopTime('timer1');
+        $("#timer").text("Waiting")
+      }
+      socket.send(data);
+      return false;
+    });
+    }, delayInMilliseconds);
+  });
+</script>
+    <label class="players_list" for="players_list">Players list:</label>
+    {% if room['players_list'] %}
+      <div class="players">
+        {% for i in range(players | length) %}
+          {% if players[i] is not none %}
+              <li class="player_username{{i}}">{{players[i]}}</li>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="empty_room">Empty room</p>
+    {% endif %}
+    {% if g.user['username'] in players %}
+      {% if player_ready %}
+        <form action="{{ url_for('mainroom.ready', id=room['id'], player_ready=0) }}" method="post">
+          <input class="danger" type="submit" value="Not Ready">
+        </form>
+      {% else %}
+        <form action="{{ url_for('mainroom.ready', id=room['id'], player_ready=1) }}" method="post">
+          <input class="ready" type="submit" value="Ready">
+        </form>
+      {% endif %}
+      <form action="{{ url_for('mainroom.leave_room', id=room['id']) }}" method="post">
+        <input class="danger" type="submit" value="Leave" onclick="return confirm('Are you sure?');">
+      </form>
+      <div class='Timer' id="timer">
+        Waiting
+      </div>
+    {% else %}
+      <form action="{{ url_for('mainroom.join_room', id=room['id']) }}" method="post">
+        <input class="join" type="submit" value="Join">
+      </form>
+    {% endif %}
+  <hr>
+{% endblock %}

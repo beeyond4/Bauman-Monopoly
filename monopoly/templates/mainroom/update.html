@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ room['title'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">Title</label>
+    <input class="textarea" name="title" id="title"
+      value="{{ request.form['title'] or room['title'] }}" required>
+    <label for="players_list">Players list</label>
+    <div class="players">
+    {% if room['players_list'] %}
+      {% for player in players %}
+        {% if player is not none %}
+        <li >{{player}}</li>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% else %}
+      <p class="empty_player">Empty room</p>
+    {% endif %}
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  <form action="{{ url_for('mainroom.delete', id=room['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block header %}
+  <h1>{% block title %}Your profile{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('profile.edit', id=g.user['id']) }}">Edit</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+{% if g.user %}
+    <article class="profile">
+      <header>
+          <h1>{{ g.user['username'] }}</h1>
+      </header>
+        <li class="Balance">Balance: {{ g.user['balance'] }} coins</li>
+    </article>
+    <body>
+      <form action="{{url_for('mainroom.index')}}">
+      <input class="button" type="submit" value="Browse rooms"></input>
+      </form>
+    </body>
+      <hr>
+{% endif %}
+{% endblock %}
